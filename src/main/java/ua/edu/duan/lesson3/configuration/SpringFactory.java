@@ -1,6 +1,8 @@
 package ua.edu.duan.lesson3.configuration;
 
 
+import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.info.Info;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,6 +15,17 @@ import ua.edu.duan.lesson3.service.TestServiceTwo;
 @Configuration
 public class SpringFactory {
 
+
+    @Bean
+    public OpenAPI openAPI(){
+       OpenAPI openAPI = new OpenAPI();
+
+       openAPI.setInfo(new Info());
+       openAPI.getInfo().setTitle("Backed Course  project");
+       openAPI.getInfo().setDescription("This project include all lections of BE course");
+
+       return openAPI;
+    }
 
     @Bean
     @Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)

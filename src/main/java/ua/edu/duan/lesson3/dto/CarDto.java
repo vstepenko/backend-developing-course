@@ -2,6 +2,7 @@ package ua.edu.duan.lesson3.dto;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
 
@@ -9,6 +10,7 @@ public class CarDto {
 
     @JsonInclude(NON_NULL)
     @JsonAlias("car-code")
+    @Schema(name="code", title = "Unique code of car")
     private String code;
 
     @JsonAlias("car-name")

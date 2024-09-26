@@ -1,7 +1,10 @@
 package ua.edu.duan.lesson3.controller;
 
-
-import org.springframework.context.annotation.Scope;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +19,7 @@ import ua.edu.duan.lesson3.service.CarService;
 import java.util.List;
 
 @Controller
+@Tag(name ="Car controller", description = "This controller contain CRUD operations for cars ")
 public class CarController {
 
 
@@ -26,6 +30,14 @@ public class CarController {
     }
 
     @GetMapping(path = "/car")
+    @Operation(summary = "return car", description = "Return car by Id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Ok", content =
+                    { @Content(mediaType = "application/json")}),
+            @ApiResponse(responseCode = "400", description = "Invalid ID supplied"),
+            @ApiResponse(responseCode = "404", description = "Customer not found"),
+            @ApiResponse(responseCode = "500", description = "Internal server error")
+    })
     @ResponseBody
     public CarDto getCar(@RequestParam(required = true) String code) {
         return carService.getCar(code);
