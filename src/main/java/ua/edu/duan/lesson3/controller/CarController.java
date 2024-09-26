@@ -1,6 +1,7 @@
 package ua.edu.duan.lesson3.controller;
 
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,13 +18,14 @@ import java.util.List;
 @Controller
 public class CarController {
 
+
     private final CarService carService;
 
     public CarController(CarService carService) {
         this.carService = carService;
     }
 
-    @GetMapping(path = "/cars")
+    @GetMapping(path = "/car")
     @ResponseBody
     public CarDto getCar(@RequestParam(required = true) String code) {
         return carService.getCar(code);
