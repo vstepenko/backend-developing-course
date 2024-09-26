@@ -2,6 +2,7 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.3.3'
 	id 'io.spring.dependency-management' version '1.1.6'
+	id 'org.openapi.generator' version '7.4.0'
 }
 
 group = 'ua.edu.duan'
@@ -25,6 +26,28 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0'
+}
+
+openApiGenerate {
+	generatorName = "javascript"
+	inputSpec = "$rootDir/petstore-v3.0.yaml".toString()
+	outputDir = "$buildDir/javascript".toString()
+	apiPackage = "org.openapitools.example.api"
+	invokerPackage = "org.openapitools.example.invoker"
+	modelPackage = "org.openapitools.example.model"
+	configOptions = [
+			dateLibrary: "java8"
+	]
+	globalProperties = [
+			modelDocs: "false"
+	]
+	skipValidateSpec = true
+	logToStderr = true
+	generateAliasAsModel = false
+	// set to true and set environment variable {LANG}_POST_PROCESS_FILE
+	// (e.g. SCALA_POST_PROCESS_FILE) to the linter/formatter to be processed.
+	// This command will be passed one file at a time for most supported post processors.
+	enablePostProcessFile = false
 }
 
 tasks.named('test') {
