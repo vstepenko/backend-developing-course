@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+
+    <changeSet id="1_create_student_cars" author="stepenko">
+        <createTable tableName="cars" >
+            <column name="code" type="VARCHAR">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2_add_additional_columns_to_cars" author="stepenko">
+        <addColumn tableName="cars">
+            <column name="brand" type="VARCHAR">
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="3_add_test_data" author="stepenko">
+      <insert tableName="cars">
+          <column name="code" value="1"/>
+          <column name="name" value="m3"/>
+          <column name="description" value="Bavaria Motor Veichle"/>
+          <column name="brand" value="bmw"/>
+      </insert>
+    </changeSet>
+
+</databaseChangeLog>
