@@ -2,13 +2,14 @@ package ua.edu.duan.lesson3.service;
 
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
-import ua.edu.duan.lesson3.dto.CarDto;
 import ua.edu.duan.lesson3.entity.Car;
 import ua.edu.duan.lesson3.repository.CarRepository;
+import ua.edu.duanapi.api.dto.CarDto;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+
 
 @Service
 public class CarService {

@@ -1,5 +1,7 @@
 package ua.edu.duan.lesson3.controller;
 
+import io.helidon.webserver.ServerRequest;
+import io.helidon.webserver.ServerResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -13,14 +15,15 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import ua.edu.duan.lesson3.dto.CarDto;
 import ua.edu.duan.lesson3.service.CarService;
+import ua.edu.duanapi.api.CarControllerService;
+import ua.edu.duanapi.api.dto.CarDto;
 
 import java.util.List;
 
 @Controller
 @Tag(name ="Car controller", description = "This controller contain CRUD operations for cars ")
-public class CarController {
+public class CarController implements CarControllerService {
 
 
     private final CarService carService;
@@ -67,4 +70,28 @@ public class CarController {
 
     }
 
+    @Override
+    public void addCar(ServerRequest serverRequest, ServerResponse serverResponse, CarDto carDto) {
+
+    }
+
+    @Override
+    public void deleteCar(ServerRequest serverRequest, ServerResponse serverResponse) {
+
+    }
+
+    @Override
+    public void editCar(ServerRequest serverRequest, ServerResponse serverResponse, CarDto carDto) {
+
+    }
+
+    @Override
+    public void getCar(ServerRequest serverRequest, ServerResponse serverResponse) {
+
+    }
+
+    @Override
+    public void getCars(ServerRequest serverRequest, ServerResponse serverResponse) {
+
+    }
 }
