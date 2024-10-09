@@ -27,6 +27,16 @@ public class CarService {
         return carOptional.map(this::convert).orElse(null);
     }
 
+    public  List<CarDto> getCarByBrand(String brand) {
+        List<Car> cars= carRepository.findUsingNativeQuery(brand);
+        return cars.stream().map(this::convert).toList();
+    }
+
+    @Transactional
+    public void changeDescription(String brand, String description) {
+        carRepository.changeDescription(brand, description);
+    }
+
     public List<CarDto> getCars() {
         List<Car> cars = carRepository.findAll();
         return cars.stream().map(this::convert).collect(Collectors.toList());

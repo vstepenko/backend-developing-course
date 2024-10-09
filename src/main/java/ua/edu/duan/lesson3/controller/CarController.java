@@ -8,6 +8,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -42,6 +43,20 @@ public class CarController {
     public CarDto getCar(@RequestParam(required = true) String code) {
         return carService.getCar(code);
     }
+
+    @GetMapping(path = "/car-by_brand")
+    @ResponseBody
+    public List<CarDto> getCarByBrand(@RequestParam String brand) {
+        return carService.getCarByBrand(brand);
+    }
+
+
+    @PatchMapping(path = "/update-description")
+    @ResponseBody
+    public void getCarByBrand(@RequestParam String brand, @RequestParam String description) {
+         carService.changeDescription(brand, description);
+    }
+
 
     @GetMapping(path = "/cars")
     @ResponseBody

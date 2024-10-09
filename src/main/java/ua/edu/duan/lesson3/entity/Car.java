@@ -20,6 +20,10 @@ public class Car {
     @Column(name = "description")
     private String description;
 
+    @Column(name = "brand")
+    private String brand;
+
+
     public String getCode() {
         return code;
     }
@@ -42,5 +46,13 @@ public class Car {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
     }
 }
