@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+
+    <changeSet id="lection10" author="stepenko">
+        <createTable tableName="brand" >
+            <column name="id"  autoIncrement="true" type="INTEGER">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="brand_name" type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+
+        </createTable>
+
+        <createTable tableName="car" >
+            <column name="id"  autoIncrement="true" type="INTEGER">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="id_brand"  type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="car_name" type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="main_ad" >
+            <column name="id" type="INTEGER">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="ad_test" type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="customer" >
+            <column name="id" autoIncrement="true" type="INTEGER">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="cus_login" type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="cur_customer" >
+            <column name="id_car" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id_customer" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

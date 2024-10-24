@@ -21,22 +21,11 @@ public class FunWithTransactionService {
     @Autowired
     private OrderCountRepository orderCountRepository;
 
-    @Autowired
-    private FunWithTransactionService funWithTransactionService;
-
-    private PlatformTransactionManager platformTransactionManager;
 
 
     @PostConstruct
     public void init(){
-        orderRepository.deleteAll();
 
-        orderCountRepository.findById(1L).ifPresent(
-                orderCountEntity -> {
-                    orderCountEntity.setCount(0);
-                    orderCountRepository.save(orderCountEntity);
-                }
-        );
     }
 
 
@@ -50,7 +39,7 @@ public class FunWithTransactionService {
 
         System.out.println("SeEnd order to delivery company");
 
-        funWithTransactionService.update_counter();
+     //   funWithTransactionService.update_counter();
     }
 
 
